@@ -1,180 +1,153 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Directorio de Abogados | derecho.net.ar</title>
+<title>Derecho Wiki | derecho.net.ar</title>
 
-<meta name="description" content="Encuentre abogados en Argentina por especialidad y ciudad. Directorio jurídico de derecho.net.ar">
+<meta name="description" content="Enciclopedia jurídica abierta sobre Derecho argentino.">
 
 <style>
 
 :root{
---primary:#2c5363;
---primary-dark:#203c47;
---accent:#3e7287;
---bg:#f5f7f9;
+--color-principal:#2c5363;
+--color-fondo:#f4f6f8;
 }
 
 *{
 box-sizing:border-box;
 margin:0;
 padding:0;
-font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+font-family:system-ui, Arial, sans-serif;
 }
 
 body{
-background:var(--bg);
+background:var(--color-fondo);
 color:#333;
 }
 
-/* NAVBAR */
+/* HEADER */
 
-nav{
-background:white;
-padding:14px 20px;
+header{
+background:var(--color-principal);
+color:white;
+padding:15px;
 display:flex;
 justify-content:space-between;
 align-items:center;
-box-shadow:0 2px 8px rgba(0,0,0,0.05);
 }
 
-.logo{
-font-weight:bold;
-color:var(--primary);
-font-size:18px;
+header h1{
+font-size:20px;
 }
 
-.menu a{
-margin-left:20px;
+.search input{
+padding:8px;
+border-radius:4px;
+border:none;
+}
+
+/* LAYOUT */
+
+.layout{
+display:flex;
+max-width:1200px;
+margin:auto;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+width:250px;
+background:white;
+padding:20px;
+border-right:1px solid #ddd;
+}
+
+.sidebar h3{
+margin-bottom:10px;
+color:var(--color-principal);
+}
+
+.sidebar a{
+display:block;
 text-decoration:none;
-color:#555;
+color:#333;
+margin-bottom:8px;
 font-size:14px;
 }
 
-/* HERO */
-
-.hero{
-background:linear-gradient(135deg,var(--primary),var(--accent));
-color:white;
-padding:50px 20px;
-text-align:center;
+.sidebar a:hover{
+color:var(--color-principal);
 }
 
-.hero h1{
-font-size:30px;
+/* CONTENT */
+
+.content{
+flex:1;
+padding:30px;
+}
+
+.content h2{
+color:var(--color-principal);
 margin-bottom:10px;
 }
 
-.hero p{
-opacity:0.9;
-margin-bottom:20px;
+.content p{
+margin-bottom:15px;
+line-height:1.6;
 }
 
-.search-box{
-max-width:700px;
-margin:auto;
-display:flex;
-flex-wrap:wrap;
-gap:10px;
-}
+/* ARTICLE LIST */
 
-.search-box input,
-.search-box select{
-
-flex:1;
-padding:12px;
-border-radius:6px;
-border:none;
-font-size:16px;
-}
-
-.search-box button{
-background:white;
-color:var(--primary);
-border:none;
-padding:12px 18px;
-border-radius:6px;
-font-weight:bold;
-cursor:pointer;
-}
-
-/* CONTAINER */
-
-.container{
-max-width:1200px;
-margin:auto;
-padding:30px 20px;
-}
-
-/* GRID */
-
-.grid{
+.article-list{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:20px;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:15px;
+margin-top:20px;
 }
 
-/* CARD */
-
-.card{
+.article{
 background:white;
-padding:20px;
-border-radius:10px;
-box-shadow:0 3px 12px rgba(0,0,0,0.08);
-transition:0.2s;
+padding:15px;
+border-radius:8px;
+box-shadow:0 2px 6px rgba(0,0,0,0.05);
 }
 
-.card:hover{
-transform:translateY(-4px);
-}
-
-.card h3{
-color:var(--primary);
-margin-bottom:5px;
-}
-
-.card p{
-font-size:14px;
-margin-bottom:5px;
-}
-
-.badge{
-display:inline-block;
-background:var(--accent);
-color:white;
-padding:4px 8px;
-border-radius:5px;
-font-size:12px;
-margin-bottom:8px;
-}
-
-.profile-btn{
-display:inline-block;
-margin-top:10px;
+.article a{
 text-decoration:none;
-background:var(--primary);
-color:white;
-padding:8px 14px;
-border-radius:6px;
-font-size:14px;
-}
-
-.profile-btn:hover{
-background:var(--primary-dark);
+color:var(--color-principal);
+font-weight:bold;
 }
 
 /* FOOTER */
 
 footer{
-background:var(--primary);
+margin-top:40px;
+background:var(--color-principal);
 color:white;
 text-align:center;
-padding:25px;
-margin-top:40px;
+padding:20px;
 font-size:14px;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+.layout{
+flex-direction:column;
+}
+
+.sidebar{
+width:100%;
+border-right:none;
+border-bottom:1px solid #ddd;
+}
+
 }
 
 </style>
@@ -183,132 +156,75 @@ font-size:14px;
 
 <body>
 
-<nav>
+<header>
 
-<div class="logo">derecho.net.ar</div>
+<h1>Derecho Wiki</h1>
 
-<div class="menu">
-<a href="#">Inicio</a>
-<a href="#">Especialidades</a>
-<a href="#">Ciudades</a>
-<a href="#">Publicar perfil</a>
+<div class="search">
+<input type="text" placeholder="Buscar artículo...">
 </div>
 
-</nav>
+</header>
 
-<section class="hero">
+<div class="layout">
 
-<h1>Encuentre Abogados en Argentina</h1>
+<aside class="sidebar">
 
-<p>Busque por especialidad, ciudad o nombre</p>
+<h3>Categorías</h3>
 
-<div class="search-box">
+<a href="#">Derecho Constitucional</a>
+<a href="#">Derecho Civil</a>
+<a href="#">Derecho Penal</a>
+<a href="#">Derecho Laboral</a>
+<a href="#">Derecho Administrativo</a>
+<a href="#">Derecho Comercial</a>
 
-<input type="text" id="searchInput" placeholder="Nombre o ciudad">
+</aside>
 
-<select id="filterEspecialidad">
+<main class="content">
 
-<option value="">Especialidad</option>
-<option value="laboral">Derecho Laboral</option>
-<option value="civil">Derecho Civil</option>
-<option value="penal">Derecho Penal</option>
-<option value="familia">Derecho de Familia</option>
+<h2>Bienvenido a Derecho Wiki</h2>
 
-</select>
+<p>
+Derecho Wiki es una enciclopedia jurídica dedicada al estudio y divulgación del Derecho argentino. 
+Su objetivo es ofrecer información clara y accesible sobre instituciones jurídicas, legislación y doctrina.
+</p>
 
-<button>Buscar</button>
+<h2>Artículos destacados</h2>
 
+<div class="article-list">
+
+<div class="article">
+<a href="#">Contrato de trabajo</a>
+<p>Concepto, elementos y regulación legal.</p>
 </div>
 
-</section>
-
-<div class="container">
-
-<div class="grid" id="lawyers">
-
-<div class="card" data-especialidad="laboral">
-
-<span class="badge">Laboral</span>
-
-<h3>Dr. Juan Pérez</h3>
-
-<p>Buenos Aires</p>
-
-<p>Despidos, indemnizaciones y conflictos laborales.</p>
-
-<a class="profile-btn" href="#">Ver perfil</a>
-
+<div class="article">
+<a href="#">Despido</a>
+<p>Tipos de despido y consecuencias jurídicas.</p>
 </div>
 
-<div class="card" data-especialidad="civil">
-
-<span class="badge">Civil</span>
-
-<h3>Dra. María Gómez</h3>
-
-<p>Córdoba</p>
-
-<p>Contratos, daños y responsabilidad civil.</p>
-
-<a class="profile-btn" href="#">Ver perfil</a>
-
+<div class="article">
+<a href="#">Responsabilidad civil</a>
+<p>Principios y régimen legal en Argentina.</p>
 </div>
 
-<div class="card" data-especialidad="penal">
-
-<span class="badge">Penal</span>
-
-<h3>Dr. Carlos Fernández</h3>
-
-<p>Rosario</p>
-
-<p>Defensa penal y asesoramiento penal.</p>
-
-<a class="profile-btn" href="#">Ver perfil</a>
-
+<div class="article">
+<a href="#">Delito</a>
+<p>Concepto y estructura del delito.</p>
 </div>
 
 </div>
+
+</main>
 
 </div>
 
 <footer>
 
-© 2026 derecho.net.ar  
-Directorio Jurídico Argentino
+© 2026 derecho.net.ar — Enciclopedia Jurídica
 
 </footer>
-
-<script>
-
-const searchInput=document.getElementById("searchInput");
-const filterEspecialidad=document.getElementById("filterEspecialidad");
-
-function filterLawyers(){
-
-let text=searchInput.value.toLowerCase();
-let especialidad=filterEspecialidad.value;
-
-let cards=document.querySelectorAll(".card");
-
-cards.forEach(card=>{
-
-let content=card.innerText.toLowerCase();
-let cardEspecialidad=card.dataset.especialidad;
-
-let matchText=content.includes(text);
-let matchEspecialidad=especialidad===""||cardEspecialidad===especialidad;
-
-card.style.display=(matchText&&matchEspecialidad)?"block":"none";
-
-});
-
-}
-
-searchInput.addEventListener("keyup",filterLawyers);
-filterEspecialidad.addEventListener("change",filterLawyers);
-
-</script>
 
 </body>
 </html>
