@@ -91,7 +91,6 @@ font-size:14px;
 .breadcrumbs{
 font-size:14px;
 margin-bottom:18px;
-color:#666;
 }
 
 .breadcrumbs a{
@@ -99,8 +98,14 @@ text-decoration:none;
 color:#2c5363;
 }
 
-.breadcrumbs a:hover{
-text-decoration:underline;
+.breadcrumbs span{
+color:#666;
+}
+
+.breadcrumbs a + a::before,
+.breadcrumbs span::before{
+content:" › ";
+color:#999;
 }
 
 </style>
