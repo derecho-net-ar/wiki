@@ -99,11 +99,12 @@ color:#2c5363;
 }
 
 .breadcrumbs span{
-color:#666;
+color:#555;
 }
 
-.breadcrumbs a + a::before,
-.breadcrumbs span::before{
+/* separador solo entre elementos */
+
+.breadcrumbs > * + *::before{
 content:" › ";
 color:#999;
 }
