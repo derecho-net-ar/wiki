@@ -324,6 +324,65 @@ Propiedad de César Romero.
 
 </footer>
 
+  <script src="https://unpkg.com/lunr/lunr.js"></script>
+  <script>
+
+let idx;
+let pages=[];
+
+fetch('/search.json')
+.then(res=>res.json())
+.then(data=>{
+
+pages=data;
+
+idx = lunr(function () {
+
+this.ref('url');
+this.field('title');
+this.field('content');
+
+pages.forEach(function (doc) {
+this.add(doc)
+}, this)
+
+})
+
+});
+
+const input=document.querySelector(".search input");
+const resultsContainer=document.getElementById("search-results");
+
+input.addEventListener("input", function(){
+
+if(!idx) return;
+
+let query=this.value;
+
+if(query.length<2){
+resultsContainer.innerHTML="";
+return;
+}
+
+let results=idx.search(query);
+
+let html="";
+
+results.slice(0,10).forEach(r=>{
+
+let page=pages.find(p=>p.url===r.ref);
+
+html+=`<div class="result">
+<a href="${page.url}">${page.title}</a>
+</div>`;
+
+});
+
+resultsContainer.innerHTML=html;
+
+});
+
+</script>
 </body>
 
 </html>
